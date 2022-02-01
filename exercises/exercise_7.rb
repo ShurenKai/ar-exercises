@@ -17,10 +17,8 @@ Employee.validates :hourly_rate, numericality: { greater_than_or_equal_to: 20, l
 Employee.validates :store_id, presence: true
 
 Store.validates :name, presence: true, length: { minimum: 3 }
-Store.validates :annual_revenue, presence: ">= 0"
+Store.validates :annual_revenue, presence: true, numericality: { greater_than_or_equal_to: 0}
 
 @store_name = gets.chomp
 
-@store_name = Store.create( name: "#{@store_name}" )
-
-@store_name.save
+@store_name = Store.create!( name: "#{@store_name}" )
