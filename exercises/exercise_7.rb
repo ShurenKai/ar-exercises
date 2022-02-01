@@ -11,10 +11,16 @@ puts "----------"
 
 # Your code goes here ...
 
-Employee.validates :first_name, presense: true
-Employee.validates :last_name, presense: true
-Employee.validates :hourly_rate, presense: integer(40..200)
-Employee.validates :store_id, presense: true
+Employee.validates :first_name, presence: true
+Employee.validates :last_name, presence: true
+Employee.validates :hourly_rate, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }
+Employee.validates :store_id, presence: true
 
-Store.validates :name, presense: min(3)
-Store.validates :annual_revenue, presense: "> 0"
+Store.validates :name, presence: true, length: { minimum: 3 }
+Store.validates :annual_revenue, presence: ">= 0"
+
+@store_name = gets.chomp
+
+@store_name = Store.create( name: "#{@store_name}" )
+
+@store_name.save
