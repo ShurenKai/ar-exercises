@@ -10,3 +10,11 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+
+Employee.validates :first_name, presense: true
+Employee.validates :last_name, presense: true
+Employee.validates :hourly_rate, presense: integer(40..200)
+Employee.validates :store_id, presense: true
+
+Store.validates :name, presense: min(3)
+Store.validates :annual_revenue, presense: "> 0"
